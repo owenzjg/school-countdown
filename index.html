@@ -82,8 +82,9 @@
         const response=await fetch("https://timor.tech/api/holiday/year/"+year,{cache:"no-store"});
         const data=await response.json();
         for(const [day,info] of Object.entries(data.holiday||data)){
-          if(info&&info.holiday)daysByYear[year][day]=info.name||"假期";
-          else if(info&&!info.holiday)delete daysByYear[year][day];
+          const fullDay=info?.date||(year+"-"+day);
+          if(info&&info.holiday)daysByYear[year][fullDay]=info.target||info.name||"假期";
+          else if(info&&!info.holiday)delete daysByYear[year][fullDay];
         }
         online=true;
       }catch(_){}
@@ -97,12 +98,12 @@
         const date=at(item.day,12,0),last=periods.at(-1);
         if(last){
           const after=new Date(last.end);after.setDate(after.getDate()+1);
-          if(key(after)===item.day&&last.name===item.name){last.end=date;continue}
+          if(key(after)===item.day){last.end=date;continue}
         }
         periods.push({name:item.name,start:date,end:date});
       }
       periods.forEach(p=>{
-        p.leave=new Date(p.start);p.leave.setDate(p.leave.getDate()-1);p.leave.setHours(17,25,0,0);
+        p.leave=new Date(p.start);p.leave.setHours(17,25,0,0);
         p.return=new Date(p.end);p.return.setHours(18,30,0,0);
       });
     }
