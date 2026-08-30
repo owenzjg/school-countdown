@@ -13,7 +13,7 @@
     header{align-items:center;padding-bottom:17px;border-bottom:1px solid var(--ink)}header p,footer p{margin:0}.mark{font-weight:700;letter-spacing:.08em}.mark i{display:inline-block;width:7px;height:7px;margin:0 8px 1px 0;background:var(--red);border-radius:50%}
     .stage{display:grid;align-content:center;padding:clamp(58px,10vh,140px) 0}.kicker{margin:0 0 18px;color:var(--red);font-size:10px;letter-spacing:.16em;text-transform:uppercase}
     h1{max-width:880px;margin:0 0 clamp(42px,7vw,94px);font-family:"Bodoni 72",Didot,"Songti SC",serif;font-size:clamp(58px,10vw,154px);font-weight:400;letter-spacing:-.07em;line-height:.78}
-    .counter{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+    .counter-line{display:flex;align-items:end;gap:clamp(12px,2vw,28px)}.counter{flex:1;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.unit{padding-bottom:8px;color:var(--red);font-family:"Bodoni 72",Didot,"Songti SC",serif;font-size:clamp(34px,5vw,72px);letter-spacing:-.08em;line-height:1}
     .digit{position:relative;display:grid;min-width:0;min-height:clamp(76px,15vw,190px);place-items:center;overflow:hidden;border-right:1px solid var(--line);font-family:"Bodoni 72",Didot,serif;font-size:clamp(54px,11vw,160px);font-variant-numeric:tabular-nums;letter-spacing:-.08em;line-height:1}.digit:last-child{border-right:0}.digit::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px solid rgba(24,24,22,.1)}.digit.flip span{animation:flip .42s cubic-bezier(.2,.7,.2,1)}@keyframes flip{0%{transform:translateY(-95%);opacity:0}100%{transform:translateY(0);opacity:1}}
     footer{padding-top:16px;border-top:1px solid var(--ink);color:#77736a}.page-nav{position:fixed;right:24px;bottom:22px;display:flex;align-items:center;gap:8px;color:#77736a;font-size:11px;letter-spacing:.14em}.page-nav a{color:inherit;text-decoration:none}.page-nav a[aria-current="page"]{color:var(--ink)}.page-nav a:hover{color:var(--red)}
     @media(max-width:680px){main{padding:18px}.stage{padding:70px 0}h1{font-size:clamp(54px,17vw,88px);margin-bottom:52px}.counter{grid-template-columns:repeat(3,1fr)}.digit{min-height:90px;border-bottom:1px solid var(--line)}.digit:nth-child(3n){border-right:0}.digit:nth-last-child(-n+3){border-bottom:0}header p,footer p:last-child{display:none}.page-nav{right:18px;bottom:16px}}
@@ -22,7 +22,7 @@
 <body>
   <main>
     <header><div class="mark"><i></i>SCHOOL COUNTDOWN</div><p>2025.09.01 — 2028.06.10</p></header>
-    <section class="stage" aria-live="polite"><p class="kicker">The final count</p><h1>高考<br>秒数</h1><div class="counter" id="counter" aria-label="距离高考结束的秒数"></div></section>
+    <section class="stage" aria-live="polite"><p class="kicker">The final count</p><h1>高考<br>倒计时</h1><div class="counter-line"><div class="counter" id="counter" aria-label="距离高考结束的秒数"></div><span class="unit">秒</span></div></section>
     <footer><p>GAOKAO · 2028</p><p>CHINA STANDARD TIME</p></footer>
   </main>
   <nav class="page-nav" aria-label="页面切换"><a href="./index.html">01</a><span>/</span><a href="./page2.html" aria-current="page">02</a></nav>
